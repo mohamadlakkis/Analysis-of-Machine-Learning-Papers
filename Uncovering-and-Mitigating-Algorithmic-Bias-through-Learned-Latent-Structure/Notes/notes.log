@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.8.21)  25 AUG 2024 11:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2024.8.21)  27 AUG 2024 07:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.tex
-(/home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.tex
+**/home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.tex
+(/home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.tex
 LaTeX2e <2020-02-02> patch level 2
 L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
@@ -214,42 +214,67 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\@float@every@algorithm=\toks22
+\c@algorithm=\count199
+) (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+ (/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count266
+\c@ALG@rem=\count267
+\c@ALG@nested=\count268
+\ALG@tlm=\skip53
+\ALG@thistlm=\skip54
+\c@ALG@Lnr=\count269
+\c@ALG@blocknr=\count270
+\c@ALG@storecount=\count271
+\c@ALG@tmpcounter=\count272
+\ALG@tmplength=\skip55
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count199
+\l__kernel_color_stack_int=\count273
 \l__pdf_internal_box=\box49
-) (/home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.aux)
+) (/home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.aux)
 \openout1 = `notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count266
+\scratchcounter=\count274
 \scratchdimen=\dimen150
 \scratchbox=\box50
-\nofMPsegments=\count267
-\nofMParguments=\count268
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count269
+\nofMPsegments=\count275
+\nofMParguments=\count276
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count277
 \MPscratchDim=\dimen151
-\MPnumerator=\count270
-\makeMPintoPDFobject=\count271
-\everyMPtoPDFconversion=\toks23
+\MPnumerator=\count278
+\makeMPintoPDFobject=\count279
+\everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -257,7 +282,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 \AtBeginShipoutBox=\box51
-Package hyperref Info: Link coloring OFF on input line 11.
+Package hyperref Info: Link coloring OFF on input line 13.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -265,41 +290,48 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count272
+\c@section@level=\count280
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
-LaTeX Info: Redefining \nameref on input line 11.
- (/home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.out) (/home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.out)
+LaTeX Info: Redefining \ref on input line 13.
+LaTeX Info: Redefining \pageref on input line 13.
+LaTeX Info: Redefining \nameref on input line 13.
+ (/home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.out) (/home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.out)
 \@outlinefile=\write3
 \openout3 = `notes.out'.
 
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 35.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 35.
- (/home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 35.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 35.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Overfull \hbox (0.33392pt too wide) in paragraph at lines 52--54
+[]\OT1/cmr/m/n/10 These gen-er-a-tive trans-for-ma-tions ac-tu-ally help us to gen-er-ate new data(i.e.
+ []
+
+[3]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 76.
+ [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 102.
+ [5]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 102.
+ (/home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 102.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 102.
 Package rerunfilecheck Info: File `notes.out' has not changed.
-(rerunfilecheck)             Checksum: A02D95553E30B97FF125B1AA17CF9044;47.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 35.
+(rerunfilecheck)             Checksum: 4B7A68F64A8EA1BFF521256FC4F2F352;699.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 102.
  ) 
 Here is how much of TeX's memory you used:
- 6284 strings out of 481239
- 94629 string characters out of 5920377
- 359131 words of memory out of 5000000
- 21450 multiletter control sequences out of 15000+600000
- 537295 words of font info for 41 fonts, out of 8000000 for 9000
+ 6874 strings out of 481239
+ 103566 string characters out of 5920377
+ 374797 words of memory out of 5000000
+ 22015 multiletter control sequences out of 15000+600000
+ 538056 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,6n,37p,368b,315s stack positions out of 5000i,500n,10000p,200000b,80000s
- </home/mnl/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on /home/mnl/Desktop/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.pdf (2 pages, 59687 bytes).
+ 34i,9n,37p,1655b,411s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/mnl/.texlive2019/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on /home/mnl/Desktop/dev/Machine-Learning-My-Notes/ML-Papers/Analysis-of-Machine-Learning-Papers/Uncovering-and-Mitigating-Algorithmic-Bias-through-Learned-Latent-Structure/Notes/notes.pdf (5 pages, 168349 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 36 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
- 9 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 128 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 15 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

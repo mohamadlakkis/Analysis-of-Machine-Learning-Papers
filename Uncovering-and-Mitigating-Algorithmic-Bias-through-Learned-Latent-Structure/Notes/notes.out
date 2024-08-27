@@ -1,1 +1,8 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Understanding the Problem}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Past Methodologies and their Downside for learning the latent structure of the data}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Resampling for class imbalance}{subsection.2.1}% 4
+\BOOKMARK [3][-]{subsubsection.2.1.2}{Generating debiased data}{subsection.2.1}% 5
+\BOOKMARK [3][-]{subsubsection.2.1.3}{Supervised Learning Approaches}{subsection.2.1}% 6
+\BOOKMARK [3][-]{subsubsection.2.1.4}{Clustering to identiy bias}{subsection.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.2}{The Proposed Method of Uncovering and Mitigating Algorithmic Bias}{section.2}% 8
