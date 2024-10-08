@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\begin{document}
+
+\title{Analysis of the Paper: Benchmarking Machine Learning Techniques for THz Channel Estimation Problems}
+\author{Mohamad Lakkis}
+\date{\today}
+\maketitle
+
+\section{Introduction}
+
+The paper focuses on the application of machine learning (ML) techniques for **channel estimation (CE)** in **Terahertz (THz) communication systems**, which are critical for future wireless networks such as 6G. Channel estimation is necessary for predicting how signals will propagate through the environment, particularly in challenging scenarios where high data rates and low-latency communications are required. THz signals face significant challenges due to their high frequency, which causes them to be sensitive to environmental factors such as reflection, scattering, and absorption.
+
+The authors explore various machine learning algorithms to estimate the channel, comparing techniques such as **Neural Networks (NN)**, **logistic regression (LR)**, and **Projected Gradient Ascent (PGA)**. Among these, the results show that PGA provides the best performance, especially under low Signal-to-Noise Ratio (SNR) conditions, which makes it a promising candidate for THz channel estimation.
+
+\section{Challenges in THz Channel Estimation}
+
+The estimation of channel response parameters \( \mathbf{H} \) in THz communication systems is particularly challenging due to the nature of THz signals. These signals operate at frequencies between 300 GHz and 10 THz, which means they have a very small wavelength and are susceptible to a variety of physical limitations such as high attenuation and molecular absorption. In addition, the hardware limitations, such as the need for high-speed **Analog-to-Digital Converters (ADCs)**, add to the complexity. These converters often operate with low resolution (e.g., 1-bit ADCs), which can introduce significant quantization errors.
+
+Another challenge is that the **signal-to-noise ratio (SNR)** must be carefully managed to ensure reliable channel estimation. THz systems operate in environments where thermal noise is substantial due to the large bandwidths involved. Therefore, traditional channel estimation techniques, which rely on pre-defined models, may not be adequate. Instead, the authors explore **data-driven approaches** using machine learning to improve the accuracy of channel estimation.
+
+\section{Handling Complex Numbers}
+
+Since the transmitted and received signals in THz systems are complex-valued, the authors of the paper address this by converting the complex definitions into real-valued representations. This conversion is necessary because most machine learning algorithms operate on real numbers.
+
+- The received noisy symbols \( \mathbf{y}_n \), the channel matrix \( \mathbf{H} \), and the transmitted signal \( \mathbf{x}_n \) are all split into their real and imaginary components. For example, \( \mathbf{y}_n = [\text{Re}(\mathbf{y}_n), \text{Im}(\mathbf{y}_n)] \), and similar decompositions are applied to the channel matrix and the transmitted signal.
+- After this decomposition, the real and imaginary parts are processed as separate real-valued inputs, which allows machine learning algorithms to process the data effectively without handling complex numbers directly.
+
+This approach simplifies the problem, allowing the system to operate in a real-valued framework while still preserving the necessary information from the original complex-valued signals.
+
+\section{Neural Network-Based Channel Estimation}
+
+In the **Neural Network (NN) architecture** proposed by the authors, the input signals \( \mathbf{x}_n \) are passed through multiple neurons, each of which applies a weighted transformation followed by a non-linear activation function. The weights of the network correspond to the channel response parameters \( \mathbf{H}_i \), and the bias terms correspond to the noise \( z_i \).
+
+The neural network aims to learn the mapping between the input feature \( \mathbf{x}_n \) and the output signal \( \mathbf{y}_n \). The transformation is represented by the equation:
+
+\[
+y_n = f(H_i x_n + z_i)
+\]
+
+where \( f(\cdot) \) is the activation function applied to the weighted sum of inputs. Different activation functions are explored, including the **sign function** \( \text{sign}(x) \), which helps map the network's output to binary values, making it suitable for decision-making processes such as decoding binary signals.
+
+The training of the neural network involves optimizing the weights \( \mathbf{H}_i \) and bias terms \( z_i \) to minimize the **loss function**. They chose the loss function which measures the difference between the predicted output \( \mathbf{y}_n \) and the expected output \( \mathbf{y}_n^e \) as follows: 
+
+\[
+[\hat{H},\hat{z}] = \underset{H,z}{\text{argmin}} [\mathbb{J}(H,z)]
+\] where 
+\[
+\mathbb{J}(H,z) = \frac{1}{N} \sum_{n=1}^{N} \left\| y_n - tanh(H_i x_n + z_i) \right\|_2^2 + \lambda \left\| H \right\|_2^2
+\]where \( \lambda \) is the regularization parameter.\\ Note that during the training, the activation function used is the sign function. \\ 
+
+Once the loss is computed, the weights \( \mathbf{H}_i \) are updated using **gradient descent**, where the gradients of the loss function with respect to the weights are calculated, and the weights are updated accordingly:
+
+\[
+H_i \leftarrow H_i - \eta \nabla_{H_i} \text{Loss}
+\]
+
+Here, \( \eta \) is the learning rate, which controls the step size of the gradient descent update. \\ 
+
+Now I will provide the dimension of each of these entries, to make it clear what are using in each case: \\
+- Note $M_r = N = M_t$ \\
+- \( \mathbf{y}_n \) is of dimension \( M_r \times 1 \), where \( M_r \) is the number of receive antennas. \\
+- \( \mathbf{H}_i \) is of dimension \( 1 \times M_r \), where \( M_t \) is the number of transmit antennas.\\
+- \( \mathbf{x}_n \) is of dimension \( M_t \times 1 \), where \( M_t \) is the number of transmit antennas. \\
+- \( \mathbf{z}_i \) is of dimension \( M_r \times 1 \), where \( M_r \) is the number of receive antennas. \\
+-\(H_i=[H_{i,1}, ... , H_{i,N}]\)\\ 
+- \( H \) is $M_r \times M_t$\\ 
+Note that the the received unquantized signals $\boldsymbol{r}$ are then converted to $\boldsymbol{y} = \hat{g}(\boldsymbol{r}) = Sign(Re(\boldsymbol{r}))+jsign(Im(\boldsymbol{r}))$, and so this is the $\boldsymbol{y}$ that we working with. 
+
+\section{Log-Likelihood Minimization}
+
+The paper also explores the use of **log-likelihood minimization** as a method for optimizing the channel estimation. In this approach, the log-likelihood function is derived from the assumption that the real and imaginary components of the received signal are modeled by a Gaussian distribution. The loss function based on log-likelihood is designed to estimate a transformed variable \( \mathbf{X}^{Re} \), where:
+
+\[
+\hat{X}^{Re} = \underset{X^{Re}}{\text{argmin}} \sum_{i=1}^{M_t} \sum_{j=1}^{M_r} \left[ \mathbf{1}[y_{i,j}^{Re} = 1] \log(\phi(X_{i,j}^{Re}/\sigma)) + \mathbf{1}[y_{i,j}^{Re} = -1] \log(1 - \phi(X_{i,j}^{Re}/\sigma)) \right]
+\]
+
+where \( \phi(\cdot) \) is the cumulative distribution function (CDF) of the standard normal distribution, and \( \sigma \) represents the standard deviation.
+
+By minimizing this log-likelihood function, the model attempts to estimate the channel parameters that maximize the probability of the observed binary outputs.
+
+\section{Projected Gradient Ascent (PGA)}
+Now we will go through the **Projected Gradient Ascent (PGA)** algorithm used in the paper. 
+
+\section{Conclusion}
+
+This paper provides a comprehensive comparison of various machine learning techniques for **THz channel estimation**. By converting the complex-valued channel estimation problem into a real-valued one, the authors are able to leverage powerful machine learning models such as neural networks and log-likelihood minimization techniques to achieve accurate channel estimation. The results indicate that methods like **Projected Gradient Ascent (PGA)** and **Neural Networks (NN)** perform well in challenging SNR conditions, making them suitable candidates for future THz communication systems.
+
+\end{document}
