@@ -216,7 +216,7 @@ H_{k+1} = H_k + \alpha_k \nabla f(H_k)
 Where \( \nabla f(H_k) \) is the gradient of the loss function with respect to \( H_k \), and \( \alpha_k \) is the step size. \\
 But now we have a \underline{Problem} How do we make sure this matrix $H_{k+1} \in Q?$  
 \subsubsection*{Projection Step to $Q$}
-There is many way to project a matrix to a low-rank space, but one of the most known way is to use the **Singular Value Decomposition (SVD)**. SVD is a matrix factorization technique that can decompose a matrix into its singular values and corresponding singular vectors. By keeping only the largest singular values (up to rank $r$), you can project the matrix back onto the space of low-rank matrices.\\ Simplex projection: Ensures the solution remains within certain constraints.(maybe $H$ non-negative or any other constrain) \\ 
+There is many ways to project a matrix to a low-rank space, but one of the most known way is to use the **Singular Value Decomposition (SVD)**. Now I will explain how we are doing stuff for PGA. SVD is a matrix factorization technique that can decompose a matrix into its singular values and corresponding singular vectors. By keeping only the largest singular values (up to rank $r$), you can project the matrix back onto the space of low-rank matrices.\\ Simplex projection: Ensures the solution remains within certain constraints.(maybe $H$ non-negative or any other constrain) \\ 
 The SVD of a matrix \( H \) is given by:
 \[
 H = U \Sigma V^T
@@ -226,6 +226,78 @@ where \( U \) and \( V \) are orthogonal matrices, and \( \Sigma \) is a \underl
 H_{\text{proj}} = U \Sigma_{\text{proj}} V^T
 \]
 where \( \Sigma_{\text{proj}} \) is the diagonal matrix with only the \( r \) largest singular values. This projection step ensures that the updated matrix \( H_{k+1} \) remains within the low-rank constraint. \\
+Note: requires projecting the updated solution back into the feasible set after each gradient step. Which might be computationally expensive. That is where Franke-Wolfe algorithm comes into play!
+\section{Franke-Wolfe Algorithm}
+The Frank-Wolfe algorithm (also called Conditional Gradient Descent) is particularly useful for solving convex optimization problems with constraints. The algorithm works directly in the $Q$, meaning it doesn't find a solution in $\mathbb{R}^n$ and then projects it to $Q$, it immediatly find the solution in $Q$. \\
+The algorithm works by solving a linear approximation of the objective function at each step, instead of directly taking a gradient step followed by a projection.\\ 
+
+Given a convex objective function \( f(x) \) and a convex constraint set \( C \), the Frank-Wolfe algorithm seeks to minimize the objective function while ensuring that the solution stays within the feasible region \( C \). The steps of the algorithm are as follows:
+
+\begin{itemize}
+    \item \textbf{Input:} Initial point \( x_0 \in C \), step size \( \gamma_t \), and maximum iterations \( T \).
+    \item \textbf{For each iteration \( t = 0, 1, \dots, T \):}
+    \begin{enumerate}
+        \item Compute the gradient of the objective function at the current point \( x_t \):
+        \[
+        \nabla f(x_t)
+        \]
+        
+        \item Solve the linear approximation of the objective function over the constraint set \( C \):
+        \[
+        s_t = \arg\min_{s \in C} \nabla f(x_t)^T s
+        \]
+        
+        \item Compute the step size \( \gamma_t \) (via line search or predefined):
+        \[
+        \gamma_t = \arg\min_{\gamma \in [0,1]} f((1 - \gamma) x_t + \gamma s_t)
+        \]
+        
+        \item Update the solution \( x_t \) by moving toward the new point \( s_t \):
+        \[
+        x_{t+1} = (1 - \gamma_t) x_t + \gamma_t s_t
+        \]
+    \end{enumerate}
+    \item \textbf{Output:} The final solution \( x_T \).
+\end{itemize}
+
+\section*{Special Case: Low-Rank Matrix Constraint}
+
+In the case where the objective function is defined over matrices and we impose a low-rank constraint on the matrix \( H \), the algorithm is adapted as follows:
+
+\begin{itemize}
+    \item \textbf{Input:} Initial matrix \( H_0 \) with rank constraint \( r \), gradient step size \( \gamma_t \), and maximum iterations \( T \).
+    \item \textbf{For each iteration \( t = 0, 1, \dots, T \):}
+    \begin{enumerate}
+        \item Compute the gradient of the objective function with respect to the matrix \( H_t \):
+        \[
+        \nabla f(H_t)
+        \]
+        
+        \item Perform Singular Value Decomposition (SVD) on the gradient matrix and compute the top singular vector:
+        \[
+        \nabla f(H_t) = U \Sigma V^T
+        \]
+        \[
+        \text{Top singular vector: } u_1 v_1^T
+        \]
+        
+        \item Subtract the top singular vector from the gradient to avoid domination by the largest singular value:
+        \[
+        \nabla f(H_t)_{\text{modified}} = \nabla f(H_t) - u_1 v_1^T
+        \]
+        
+        \item Solve the linear subproblem to find the next point \( S_t \) in the space of low-rank matrices:
+        \[
+        S_t = \arg\min_{S \in \text{Rank}(r)} \nabla f(H_t)^T S
+        \]
+        
+        \item Update the matrix \( H_t \) with the computed step size \( \gamma_t \):
+        \[
+        H_{t+1} = (1 - \gamma_t) H_t + \gamma_t S_t
+        \]
+    \end{enumerate}
+    \item \textbf{Output:} The final low-rank matrix \( H_T \).
+\end{itemize}
 
 
 
