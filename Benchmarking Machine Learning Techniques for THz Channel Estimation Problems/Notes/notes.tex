@@ -32,7 +32,7 @@ This approach simplifies the problem, allowing the system to operate in a real-v
 
 \section{Neural Network-Based Channel Estimation}
 
-In the **Neural Network (NN) architecture** proposed by the authors, the input signals \( \mathbf{x}_n \) are passed through multiple neurons, each of which applies a weighted transformation followed by a non-linear activation function. The weights of the network correspond to the channel response parameters \( \mathbf{H}_i \), and the bias terms correspond to the noise \( z_i \).
+In the **Neural Network (NN) architecture** proposed by the authors, the input signals \( \mathbf{x}_n \) are passed through multiple neurons, each of which applies a weighted transformation followed by a non-linear activation function. \underline{The weights of the} \underline{network correspond to the channel response parameters} \( \mathbf{H} = W \), and the bias terms correspond to the noise \( z \). Note that for now assume that $\mathbf{H}, W$ are real valued. We will explain later in depth on how to handle the complex numbers.
 
 The neural network aims to learn the mapping between the input feature \( \mathbf{x}_n \) and the output signal \( \mathbf{y}_n \). The transformation is represented by the equation:
 
@@ -49,7 +49,7 @@ The training of the neural network involves optimizing the weights \( \mathbf{H}
 \] where 
 \[
 \mathbb{J}(H,z) = \frac{1}{N} \sum_{n=1}^{N} \left\| y_n - tanh(H_i x_n + z_i) \right\|_2^2 + \lambda \left\| H \right\|_2^2
-\]where \( \lambda \) is the regularization parameter.\\ Note that during the training, the activation function used is the sign function. \\ 
+\]where \( \lambda \) is the regularization parameter.\\ Note that during the training, the activation function used is the sign function.(so while calculating the loss we are not directly looking at our outputs, because what we care about explicitly is H and not being able to retrieve the output from H, but of course being able to retrieve the output from H is crucial to make it accurate, but here we are just noting on why the loss function doesn't directly use the outputs of the NN) \\ 
 
 Once the loss is computed, the weights \( \mathbf{H}_i \) are updated using **gradient descent**, where the gradients of the loss function with respect to the weights are calculated, and the weights are updated accordingly:
 
@@ -68,6 +68,23 @@ Now I will provide the dimension of each of these entries, to make it clear what
 -\(H_i=[H_{i,1}, ... , H_{i,N}]\)\\ 
 - \( H \) is $M_r \times M_t$\\ 
 Note that the the received unquantized signals $\boldsymbol{r}$ are then converted to $\boldsymbol{y} = \hat{g}(\boldsymbol{r}) = Sign(Re(\boldsymbol{r}))+jsign(Im(\boldsymbol{r}))$, and so this is the $\boldsymbol{y}$ that we working with. 
+\subsection*{Now we are arrive exactly on how we are handling these complex numbers in the neural network.}
+So the training on a high level is the one we just described, but how are we handling the complex numbers in the neural network? \\
+So first let us start with the form of the matrices $W = W_r + iW_i$, $y = y_r +iy_i$, $b= b_r+ib_i$, $x = x_r +ix_i$. \\
+What we care about as like any NN is: 
+\[
+f(Wx+b) = f((W_r + iW_i)(x_r + ix_i) + b_r + ib_i) = f((W_r x_r - W_i x_i) + i(W_r x_i + W_i x_r) + b_r + ib_i)
+\]
+And in this particular example: $W=H, b=z$, the values that we actually care about to do the channel estimation are the actual weights and biases. And so from now on we process these numbers as real numbers, and we don't care about the complex numbers, so in other words, at each step we are keep tracking of two things the real part and the imaginary part, nothing hard to grasp. And of course while backpropagating we are essentially doing the same thing, we are just updating the real part and the imaginary part separately. \\ 
+Lastly, regarding the loss the way we are computing it is 
+\[
+Loss = \frac{1}{N} \sum_{n=1}^{N} (|y_{r,n}^e - tanh(x_{r,n} \times H_{r,n} + z_{r,n})|_2^2 + |y_{i,n}^e - tanh(x_{i,n} \times H_{i,n} + z_{i,n})|_2^2 ) 
+\]
+\[
+  + \lambda (|H_r|_2^2 + |H_i|_2^2)
+\]
+Where the subscript $r$ and $i$ denote the real and imaginary parts respectively. And $n$ denotes the $n^{th}$ sample. \\
+
 
 \section{Log-Likelihood Minimization}
 
